@@ -5,14 +5,18 @@
         <ng-template tabHeading>
           <span class="step">1</span>
           <span class="check"><fa-icon [icon]="faCheck"></fa-icon></span>
-          <span class="tabName d-none d-sm-block d-xs-block"><h6>Account Details</h6></span>
+          <span class="tabName d-none d-sm-block d-xs-block"><h6>Account Informationen</h6></span>
         </ng-template>
 
-        <strong>User Account Details</strong>
+
+        <app-account-infos [parentForm]="userForm"></app-account-infos>
 
 
         <div class="button-group">
-          <button type="button" class="btn btn-primary btn-right" (click)="selectTab(1)">Weiter</button>
+          <button type="button" class="btn btn-primary btn-right"
+                  [disabled]="userForm.get('username').invalid || userForm.get('email').invalid ||
+                  userForm.get('password1').invalid || (userForm.get('password1').value != userForm.get('password2').value)"
+                  (click)="selectTab(1)">Weiter</button>
         </div>
       </tab>
 
