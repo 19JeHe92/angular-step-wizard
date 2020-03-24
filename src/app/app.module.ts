@@ -11,12 +11,14 @@ import { TabsModule, TooltipModule } from 'ngx-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SummaryComponent } from './summary/summary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountInfosComponent,
     UserInfosComponent,
+    SummaryComponent,
   ],
   imports: [
     BrowserModule,
