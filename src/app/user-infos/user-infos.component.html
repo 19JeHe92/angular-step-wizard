@@ -1,1 +1,153 @@
-<p>user-infos works!</p>
+<div class="tabDesc">
+  <span><h5>Persönliche Informationen</h5></span>
+</div>
+<div [formGroup]="parentForm">
+  <div class="form-row">
+    <div class="form-group col-md-6 selectInput">
+      <mat-form-field>
+        <mat-label>Anrede*</mat-label>
+        <select matNativeControl formControlName="gender">
+          <option *ngFor="let gender of genders" [value]="gender.value">
+            {{gender.name}}
+          </option>
+        </select>
+      </mat-form-field>
+    </div>
+    <div class="form-group col-md-6 selectInput">
+      <mat-form-field>
+        <mat-label>Titel</mat-label>
+        <select matNativeControl formControlName="title">
+          <option *ngFor="let title of titles" [value]="title.value">
+            {{title.name}}
+          </option>
+        </select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="first" class="inp">
+        <input type="text" id="first" formControlName="first" placeholder="&nbsp;" pattern="[a-zA-ZÄÖÜäöüß\s\.\-]*"
+               matInput autocomplete="new-password" [maxlength]="40"
+               oninput="if (this.value.length > this.length) this.value = this.value.slice(0, this.maxLength);">
+        <span class="label" [ngClass]="{'slideUpPlaceholder': parentForm.get('first').touched && parentForm.get('first').value}">
+            Vorname*</span>
+        <span class="inp-border"></span>
+      </label>
+      <div class="invalid-hint" *ngIf="parentForm.get('first').touched && parentForm.get('first').invalid">
+        Bitte geben Sie einen gültigen Vornamen ein.
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="last" class="inp">
+        <input type="text" id="last" formControlName="last" placeholder="&nbsp;" pattern="[a-zA-ZÄÖÜäöüß\s\.\-]*"
+               matInput autocomplete="new-password" [maxlength]="40"
+               oninput="if (this.value.length > this.length) this.value = this.value.slice(0, this.maxLength);">
+        <span class="label" [ngClass]="{'slideUpPlaceholder': parentForm.get('last').touched && parentForm.get('last').value}">
+            Nachname*</span>
+        <span class="inp-border"></span>
+      </label>
+      <div class="invalid-hint" *ngIf="parentForm.get('last').touched && parentForm.get('last').invalid">
+        Bitte geben Sie einen gültigen Nachnamen ein.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Geburtsdatum*" readonly
+               id="dateOfBirth" formControlName="dateOfBirth">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="phone" class="inp">
+        <input type="text" id="phone" formControlName="phone" placeholder="&nbsp;" pattern="[0-9]*"
+               matInput autocomplete="new-password" [maxlength]="20"
+               oninput="if (this.value.length > this.length) this.value = this.value.slice(0, this.maxLength);">
+        <span class="label" [ngClass]="{'slideUpPlaceholder': parentForm.get('phone').touched && parentForm.get('phone').value}">
+            Telefonummer</span>
+        <span class="inp-border"></span>
+      </label>
+      <div class="invalid-hint" *ngIf="parentForm.get('phone').touched && parentForm.get('phone').invalid">
+        Bitte geben Sie ein gültige Telefonummer ein.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tabDesc mt-5">
+  <span><h5>Adressdaten</h5></span>
+</div>
+<div [formGroup]="parentForm">
+  <div class="form-row" formGroupName="address">
+    <div class="form-group col-md-9">
+      <label for="street" class="inp">
+        <input type="text" id="street" formControlName="street" placeholder="&nbsp;" pattern="[a-zA-ZÄÖÜäöüß\s\.\-]*"
+               matInput autocomplete="new-password" [maxlength]="40"
+               oninput="if (this.value.length > this.length) this.value = this.value.slice(0, this.maxLength);">
+        <span class="label" [ngClass]="{'slideUpPlaceholder': parentForm.get('address').get('street').touched && parentForm.get('address').get('street').value}">
+            Straße*</span>
+        <span class="inp-border"></span>
+      </label>
+      <div class="invalid-hint" *ngIf="parentForm.get('address').get('street').touched && parentForm.get('address').get('street').invalid">
+        Bitte geben Sie eine gültige Straße ein.
+      </div>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="number" class="inp">
+        <input type="text" id="number" formControlName="number" placeholder="&nbsp;" pattern="[0-9a-zA-Z]*"
+               [maxlength]="10" oninput="if (this.value.length > this.length) this.value = this.value.slice(0, this.maxLength);">
+        <span class="label" [ngClass]="{'slideUpPlaceholder': parentForm.get('address').get('number').touched && parentForm.get('address').get('number').value}">
+            Nr.*</span>
+        <span class="inp-border"></span>
+      </label>
+      <div class="invalid-hint" *ngIf="parentForm.get('address').get('number').touched && parentForm.get('address').get('number').invalid">
+        Bitte geben Sie eine gültige Hausnummer ein.
+      </div>
+    </div>
+  </div>
+  <div class="form-row" formGroupName="address">
+    <div class="form-group col-md-3">
+      <label for="zipCode" class="inp">
+        <input type="text" id="zipCode" formControlName="zipCode" placeholder="&nbsp;" pattern="[0-9]{5}"
+               matInput autocomplete="new-password" [maxlength]="5"
+               oninput="if (this.value.length > this.length) this.value = this.value.slice(0, this.maxLength);">
+        <span class="label" [ngClass]="{'slideUpPlaceholder': parentForm.get('address').get('zipCode').touched && parentForm.get('address').get('zipCode').value}">
+            Postleitzahl*</span>
+        <span class="inp-border"></span>
+      </label>
+      <div class="invalid-hint" *ngIf="parentForm.get('address').get('zipCode').touched && parentForm.get('address').get('zipCode').invalid">
+        Bitte geben Sie eine gültige Postleitzahl ein.
+      </div>
+    </div>
+    <div class="form-group col-md-9">
+      <label for="city" class="inp">
+        <input type="text" id="city" formControlName="city" placeholder="&nbsp;" pattern="[a-zA-ZÄÖÜäöüß\s\.\-]*"
+               matInput autocomplete="new-password">
+        <span class="label" [ngClass]="{'slideUpPlaceholder': parentForm.get('address').get('city').touched && parentForm.get('address').get('city').value}">
+            Ort*</span>
+        <span class="inp-border"></span>
+      </label>
+      <div class="invalid-hint" *ngIf="parentForm.get('address').get('city').touched && parentForm.get('address').get('city').invalid">
+        Bitte geben Sie einen gültigen Ort ein.
+      </div>
+    </div>
+  </div>
+  <div class="form-row"  formGroupName="address">
+    <div class="form-group col-md-12 selectInput">
+      <mat-form-field>
+        <mat-label>Land*</mat-label>
+        <select matNativeControl formControlName="country">
+          <option *ngFor="let country of countries" [value]="country.value">
+            {{country.name}}
+          </option>
+        </select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+

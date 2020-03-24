@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user-infos',
@@ -6,7 +7,45 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-infos.component.scss']
 })
 export class UserInfosComponent implements OnInit {
-
+  @Input() parentForm: FormGroup;
+  genders = [
+    {
+      name: 'Herr',
+      value: 'male'
+    },
+    {
+      name: 'Frau',
+      value: 'female'
+    },
+    {
+      name: 'Divers',
+      value: 'divers'
+    }
+  ];
+  titles = [
+    {
+      name: '',
+      value: ''
+    },
+    {
+      name: 'Dr.',
+      value: 'dr'
+    },
+    {
+      name: 'Prof.',
+      value: 'prof'
+    },
+    {
+      name: 'Prof. Dr.',
+      value: 'prof dr'
+    }
+  ];
+  countries = [
+    {
+      name: 'Deutschland',
+      value: 'germany'
+    },
+  ];
   constructor() { }
 
   ngOnInit(): void {

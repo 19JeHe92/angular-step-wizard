@@ -7,11 +7,7 @@
           <span class="check"><fa-icon [icon]="faCheck"></fa-icon></span>
           <span class="tabName d-none d-sm-block d-xs-block"><h6>Account Informationen</h6></span>
         </ng-template>
-
-
         <app-account-infos [parentForm]="userForm"></app-account-infos>
-
-
         <div class="button-group">
           <button type="button" class="btn btn-primary btn-right"
                   [disabled]="userForm.get('username').invalid || userForm.get('email').invalid ||
@@ -24,11 +20,11 @@
         <ng-template tabHeading>
           <span class="step">2</span>
           <span class="check"><fa-icon [icon]="faCheck"></fa-icon></span>
-          <span class="tabName d-none d-sm-block d-xs-block"><h6>Personal Details</h6></span>
+          <span class="tabName d-none d-sm-block d-xs-block"><h6>Persönliche Informationen</h6></span>
         </ng-template>
 
 
-        <strong>User Personal Details</strong>
+        <app-user-infos [parentForm]="userForm"></app-user-infos>
 
 
         <div class="button-group">
