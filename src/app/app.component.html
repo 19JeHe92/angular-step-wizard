@@ -20,7 +20,7 @@
         </div>
       </tab>
 
-      <tab id="tab2" (deselect)="onDeSelect($event)" (selectTab)="onSelectTab()">
+      <tab id="tab2" [disabled]="true" (deselect)="onDeSelect($event)" (selectTab)="onSelectTab()">
         <ng-template tabHeading>
           <span class="step">2</span>
           <span class="check"><fa-icon [icon]="faCheck"></fa-icon></span>

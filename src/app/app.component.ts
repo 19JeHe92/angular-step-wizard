@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   ) {  }
 
   selectTab(tabId: number) {
+    this.staticTabs.tabs[tabId].disabled = false;
     this.staticTabs.tabs[tabId].active = true;
     if (tabId > 0) {
       this.staticTabs.tabs[tabId - 1].customClass = 'wasActive';
