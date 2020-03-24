@@ -62,10 +62,14 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.userForm = this.formBuilder.group({
       gender: new FormControl(null, Validators.required),
+      title: new FormControl(null),
       first: new FormControl(null, Validators.required),
       last: new FormControl(null, Validators.required),
       phone: new FormControl(null),
+      username: new FormControl(null, Validators.required),
       email: new FormControl(null, Validators.required),
+      password1: new FormControl(null, Validators.required),
+      password2: new FormControl(null, Validators.required),
       dateOfBirth: new FormControl(null, Validators.required),
       address: new FormGroup({
         street: new FormControl(null),
