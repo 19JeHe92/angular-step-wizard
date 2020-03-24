@@ -1,4 +1,4 @@
 {
-  "/users/": "users",
+  "/users/": "/users",
   "/users/:userID": "/users?userID=:userID"
 }
