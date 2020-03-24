@@ -6,7 +6,8 @@
     <div class="form-group col-md-12">
       <label for="username" class="inp">
         <input type="text" id="username" formControlName="username" placeholder="&nbsp;" pattern="[a-zA-Z0-9ÄÖÜäöüß\.\-\_]*"
-               matInput autocomplete="new-password">
+               matInput autocomplete="new-password" [maxlength]="25"
+               oninput="if (this.value.length > this.length) this.value = this.value.slice(0, this.maxLength);">
         <span class="label" [ngClass]="{'slideUpPlaceholder': parentForm.get('username').touched && parentForm.get('username').value}">
             Username*</span>
         <span class="inp-border"></span>
@@ -21,7 +22,8 @@
     <div class="form-group col-md-12">
       <label for="email" class="inp">
         <input type="text" id="email" formControlName="email" placeholder="&nbsp;" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]*"
-               matInput autocomplete="new-password">
+               matInput autocomplete="new-password" [maxlength]="40"
+               oninput="if (this.value.length > this.length) this.value = this.value.slice(0, this.maxLength);">
         <span class="label" [ngClass]="{'slideUpPlaceholder': parentForm.get('email').touched && parentForm.get('email').value}">
             E-Mail Adresse*</span>
         <span class="inp-border"></span>
@@ -35,7 +37,8 @@
     <div class="form-group col-md-12">
       <label for="password1" class="inp">
         <input type="password" id="password1" formControlName="password1" placeholder="&nbsp;" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-               matInput autocomplete="new-password">
+               matInput autocomplete="new-password" [maxlength]="40"
+               oninput="if (this.value.length > this.length) this.value = this.value.slice(0, this.maxLength);">
         <span class="label" [ngClass]="{'slideUpPlaceholder': parentForm.get('password1').touched && parentForm.get('password1').value}">
             Passwort*</span>
         <span class="inp-border"></span>
@@ -49,7 +52,8 @@
     <div class="form-group col-md-12">
       <label for="password2" class="inp">
         <input type="password" id="password2" formControlName="password2" placeholder="&nbsp;"
-               matInput autocomplete="new-password">
+               matInput autocomplete="new-password" [maxlength]="40"
+               oninput="if (this.value.length > this.length) this.value = this.value.slice(0, this.maxLength);">
         <span class="label" [ngClass]="{'slideUpPlaceholder': parentForm.get('password2').touched && parentForm.get('password2').value}">
             Passwort wiederholen*</span>
         <span class="inp-border"></span>
