@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "userID": "USER_001",
+      "gender": "male",
+      "first": "Max",
+      "last": "Mustermann",
+      "phone": "01234567890",
+      "email": "max.mustermann@mail.com",
+      "dateOfBirth": "01.01.1970",
+      "address": {
+        "street": "Musterstraße",
+        "number": "1",
+        "zipCode": "01234",
+        "city": "Musterort",
+        "country": "Deutschland"
+      }
+    },
+    {
+      "userID": "USER_003",
+      "gender": "female",
+      "first": "Adriane",
+      "last": "Austermann",
+      "phone": "09876543210",
+      "email": "adriane.austermann@mail.com",
+      "dateOfBirth": "01.01.1970",
+      "address": {
+        "street": "Mustergasse",
+        "number": "99",
+        "zipCode": "98765",
+        "city": "Musterstadt",
+        "country": "Deutschland"
+      }
+    }
+  ]
+}
