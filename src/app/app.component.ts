@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   @ViewChild('staticTabs', {static: true}) staticTabs: TabsetComponent;
   userForm: FormGroup;
   faCheck = faCheck;
-  finished = false;
+  // finished = false;
   success = false;
   error = false;
   onSend = false;
@@ -31,19 +31,8 @@ export class AppComponent implements OnInit {
     }
   }
 
-  onSelectTab() {
-    this.finished = false;
-    this.staticTabs.tabs[2].disabled = true;
-  }
-
   onDeSelect(data: TabDirective): void {
     data.customClass = 'wasActive';
-  }
-
-  onFinish(tabId: number) {
-    this.finished = true;
-    this.staticTabs.tabs[tabId].disabled = false;
-    this.selectTab(tabId);
   }
 
   onSubmit() {
@@ -73,11 +62,11 @@ export class AppComponent implements OnInit {
       password2: new FormControl(null, Validators.required),
       dateOfBirth: new FormControl(null, Validators.required),
       address: new FormGroup({
-        street: new FormControl(null),
-        number: new FormControl(null),
-        zipCode: new FormControl(null),
-        city: new FormControl(null),
-        country: new FormControl(null),
+        street: new FormControl(null, Validators.required),
+        number: new FormControl(null, Validators.required),
+        zipCode: new FormControl(null, Validators.required),
+        city: new FormControl(null, Validators.required),
+        country: new FormControl(null, Validators.required),
       }),
     });
   }
