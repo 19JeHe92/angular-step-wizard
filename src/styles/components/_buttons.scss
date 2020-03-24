@@ -1,0 +1,28 @@
+.btn {
+  border: none;
+  border-radius: .25rem;
+
+  &-primary,
+  &-primary:hover,
+  &-primary:active,
+  &-primary:focus {
+    background: theme-color("primary") !important;
+    color: $white;
+    outline: none;
+  }
+
+  &-secondary,
+  &-secondary:hover,
+  &-secondary:active,
+  &-secondary:focus {
+    background: rgba(0, 0, 0, 0.15) !important;
+    color: $gray;
+    outline: none;
+  }
+
+  &:disabled {
+    background: darken($primary, 0.5);
+    color: $gray-light;
+    cursor: not-allowed;
+  }
+}

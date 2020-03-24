@@ -1,0 +1,56 @@
+.mat-form-field-type-mat-native-select .mat-form-field-infix::after {
+  right: 15px !important;
+  margin-top: -6px !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  bottom: 0;
+}
+.form-row .form-group mat-form-field .mat-form-field-infix {
+  left: 0;
+
+  .mat-form-field-label-wrapper .mat-form-field-label {
+    padding-left: 8px;
+
+    mat-label {
+      background: $white;
+      padding: 0 .15rem;
+    }
+
+  }
+}
+.mat-form-field-type-mat-native-select .mat-input-element {
+  padding-right: 15px;
+  padding-left: 10px;
+  padding-bottom: 7px;
+}
+
+.selectInput {
+  mat-form-field .mat-form-field-infix {
+    padding-bottom: 0;
+  }
+}
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+
+  &::-ms-expand {
+    display: none;
+  }
+
+  &:focus::-ms-value {
+    background-color: transparent;
+  }
+
+  option {
+    color: #666;
+  }
+}
