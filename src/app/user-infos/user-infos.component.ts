@@ -8,6 +8,9 @@ import { FormGroup } from '@angular/forms';
 })
 export class UserInfosComponent implements OnInit {
   @Input() parentForm: FormGroup;
+  minDate: Date;
+  maxDate: Date;
+  showHint = false;
   genders = [
     {
       name: 'Herr',
@@ -46,7 +49,15 @@ export class UserInfosComponent implements OnInit {
       value: 'DE'
     },
   ];
-  constructor() { }
+  constructor() {
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+    const currentDay = new Date().getDate();
+    // Set the maximum to 100 years in the past (means the user have to be max 100years).
+    this.minDate = new Date(currentYear - 100, currentMonth, currentDay);
+    // Set the maximum to 16 years in the past (means the user have to be min 16years).
+    this.maxDate = new Date(currentYear - 16, currentMonth, currentDay);
+  }
 
   ngOnInit(): void {
   }
