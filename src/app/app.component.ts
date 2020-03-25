@@ -19,6 +19,10 @@ export class AppComponent implements OnInit {
   onSend = false;
   userFormObj = {};
 
+  tab1Active = true;
+  tab2Active = false;
+  tab3Active = false;
+
   constructor(
     private formBuilder: FormBuilder,
     private dataService: DataService,

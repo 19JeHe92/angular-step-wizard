@@ -1,68 +1,66 @@
 <div class="multistepForm">
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()" autocomplete="new-password">
     <tabset #staticTabs [justified]="true">
-      <tab id="tab1" (deselect)="onDeSelect($event)" (selectTab)="selectTab(0)">
+      <tab id="tab1" (deselect)="onDeSelect($event); tab1Active = false" (selectTab)="selectTab(0); tab1Active = true">
         <ng-template tabHeading>
           <span class="step">1</span>
           <span class="check"><fa-icon [icon]="faCheck"></fa-icon></span>
           <span class="tabName d-none d-sm-block d-xs-block"><h6>Account Informationen</h6></span>
         </ng-template>
-        <div class="tab-form">
-          <app-account-infos [parentForm]="userForm"></app-account-infos>
-        </div>
+        <ng-template [ngIf]="tab1Active">
+          <div class="tab-form">
+            <app-account-infos [parentForm]="userForm"></app-account-infos>
+          </div>
 
-        <div class="button-group">
-          <button type="button" class="btn btn-primary btn-right"
-                  [disabled]="userForm.get('username').invalid || userForm.get('email').invalid ||
+          <div class="button-group">
+            <button type="button" class="btn btn-primary btn-right"
+                    [disabled]="userForm.get('username').invalid || userForm.get('email').invalid ||
                   userForm.get('password1').invalid || (userForm.get('password1').value != userForm.get('password2').value)"
-                  (click)="selectTab(1)">Weiter</button>
-        </div>
+                    (click)="selectTab(1)">Weiter</button>
+          </div>
+        </ng-template>
       </tab>
 
-      <tab id="tab2" [disabled]="true" (selectTab)="selectTab(1)">
+      <tab id="tab2" [disabled]="true" (deselect)="onDeSelect($event); tab2Active = false" (selectTab)="selectTab(1); tab2Active = true">
         <ng-template tabHeading>
           <span class="step">2</span>
           <span class="check"><fa-icon [icon]="faCheck"></fa-icon></span>
           <span class="tabName d-none d-sm-block d-xs-block"><h6>Persönliche Informationen</h6></span>
         </ng-template>
+        <ng-template [ngIf]="tab2Active">
+          <div class="tab-form">
+            <app-user-infos [parentForm]="userForm"></app-user-infos>
+          </div>
 
-        <div class="tab-form">
-          <app-user-infos [parentForm]="userForm"></app-user-infos>
-        </div>
-
-
-
-        <div class="button-group">
-          <button type="button" class="btn btn-secondary btn-left" (click)="selectTab(0)">Zurück</button>
-          <button type="button" class="btn btn-primary btn-right" (click)="onFinish(2)"
-                  [disabled]="userForm.invalid">Fertig</button>
-        </div>
+          <div class="button-group">
+            <button type="button" class="btn btn-secondary btn-left" (click)="selectTab(0)">Zurück</button>
+            <button type="button" class="btn btn-primary btn-right" (click)="onFinish(2)"
+                    [disabled]="userForm.invalid">Fertig</button>
+          </div>
+        </ng-template>
       </tab>
 
-      <tab id="tab3" [disabled]="true"  (selectTab)="selectTab(2)">
+      <tab id="tab3" [disabled]="true" (deselect)="onDeSelect($event); tab3Active = false" (selectTab)="selectTab(1); tab3Active = true">
         <ng-template tabHeading>
           <span class="step">3</span>
           <span class="check"><fa-icon [icon]="faCheck"></fa-icon></span>
           <span class="tabName d-none d-sm-block d-xs-block"><h6>Zusammenfassung</h6></span>
         </ng-template>
-
-        <ng-template [ngIf]="finished">
-
-          <div class="tab-form">
-            <app-summary [userFormObj]="userFormObj" [success]="success" [error]="error"></app-summary>
-          </div>
-
-
-        </ng-template>
-
-        <ng-template [ngIf]="success === false && error === false">
-          <div class="button-group">
-            <button type="button" class="btn btn-secondary btn-left" (click)="selectTab(1)">Zurück</button>
-            <button type="submit" class="btn btn-primary btn-right">
-              Senden
-              <span *ngIf="onSend === true" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-            </button>
-          </div>
+        <ng-template [ngIf]="tab3Active">
+          <ng-template [ngIf]="finished">
+            <div class="tab-form">
+              <app-summary [userFormObj]="userFormObj" [success]="success" [error]="error"></app-summary>
+            </div>
+          </ng-template>
+          <ng-template [ngIf]="success === false && error === false">
+            <div class="button-group">
+              <button type="button" class="btn btn-secondary btn-left" (click)="selectTab(1)">Zurück</button>
+              <button type="submit" class="btn btn-primary btn-right">
+                Senden
+                <span *ngIf="onSend === true" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              </button>
+            </div>
+          </ng-template>
         </ng-template>
       </tab>
     </tabset>
