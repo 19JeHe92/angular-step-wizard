@@ -11,11 +11,11 @@ import { TabsModule, TooltipModule } from 'ngx-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SummaryComponent } from './summary/summary.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 // import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { CustomDateAdapter } from './custom-date-adapter';
+import { SummaryComponent } from './summary/summary.component';
 
 @NgModule({
   declarations: [

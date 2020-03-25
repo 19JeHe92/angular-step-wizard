@@ -1,1 +1,44 @@
-<p>summary works!</p>
+<div class="tabDesc" *ngIf="(success && error) || (!success && !error)">
+  <span><h5>Zusammenfassung Ihrer Angaben</h5></span>
+</div>
+<div class="summary mb-4">
+  <ng-template [ngIf]="(success && error) || (!success && !error)">
+    <div class="summary-container">
+      <div class="summary-container--item">
+        <div class="summary-container--heading">Account Informationen</div>
+        <ul>
+          <li>Username: {{userFormObj.username}}</li>
+          <li>E-Mail Adresse: {{userFormObj.email}}</li>
+        </ul>
+      </div>
+      <div class="summary-container--item">
+        <div class="summary-container--heading">Persönliche Informationen</div>
+        <ul>
+          <li>Name: {{userFormObj.gender}} <span *ngIf="userFormObj.title">{{userFormObj.title}}</span>
+            {{userFormObj.first}} {{userFormObj.last}}
+          </li>
+          <li>Geburtstag: {{userFormObj.dateOfBirth |date:'dd.MM.yyyy'}}</li>
+          <li *ngIf="userFormObj.phone">Telefonnummer: {{userFormObj.phone}}</li>
+        </ul>
+      </div>
+      <div class="summary-container--item">
+        <div class="summary-container--heading">Adressdaten</div>
+        <ul>
+          <li>{{userFormObj.address.street}} {{userFormObj.address.number}}</li>
+          <li>{{userFormObj.address.zipCode}} {{userFormObj.address.city}}, {{userFormObj.address.country}}</li>
+        </ul>
+      </div>
+    </div>
+
+  </ng-template>
+  <div class="summary-hint success" [hidden]="!success">
+    <fa-icon [icon]="faSuccess"></fa-icon>
+    Ihre Daten wurden erfolgreich übertragen.
+  </div>
+  <div class="summary-hint error" [hidden]="!error">
+    <fa-icon [icon]="faError"></fa-icon>
+    Anscheinend gab es Probleme bei der Übertragung Ihrer Daten. <br> Prüfen Sie Ihre Eingaben und versuchen Sie es
+    erneut.
+  </div>
+
+</div>

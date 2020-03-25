@@ -29,7 +29,8 @@
 
         <div class="button-group">
           <button type="button" class="btn btn-secondary btn-left" (click)="selectTab(0)">Zurück</button>
-          <button type="button" class="btn btn-primary btn-right" (click)="onFinish(2)">Fertig</button>
+          <button type="button" class="btn btn-primary btn-right" (click)="onFinish(2)"
+                  [disabled]="userForm.invalid">Fertig</button>
         </div>
       </tab>
 
@@ -40,8 +41,12 @@
           <span class="tabName d-none d-sm-block d-xs-block"><h6>Zusammenfassung</h6></span>
         </ng-template>
 
+        <ng-template [ngIf]="finished">
 
-        <strong>Zusammenfassung</strong>
+            <app-summary [userFormObj]="userFormObj" [success]="success" [error]="error"></app-summary>
+
+
+        </ng-template>
 
         <ng-template [ngIf]="success === false && error === false">
           <div class="button-group">

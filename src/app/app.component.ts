@@ -13,10 +13,11 @@ export class AppComponent implements OnInit {
   @ViewChild('staticTabs', {static: true}) staticTabs: TabsetComponent;
   userForm: FormGroup;
   faCheck = faCheck;
-  // finished = false;
+  finished = false;
   success = false;
   error = false;
   onSend = false;
+  userFormObj = {};
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,10 +30,20 @@ export class AppComponent implements OnInit {
     if (tabId > 0) {
       this.staticTabs.tabs[tabId - 1].customClass = 'wasActive';
     }
+
+    this.success = false;
+    this.error = false;
+    this.onSend = false;
   }
 
   onDeSelect(data: TabDirective): void {
     data.customClass = 'wasActive';
+  }
+
+  onFinish(tabId: number) {
+    this.finished = true;
+    this.userFormObj = this.userForm.value;
+    this.selectTab(tabId);
   }
 
   onSubmit() {
@@ -42,10 +53,12 @@ export class AppComponent implements OnInit {
         (response) => {
           this.success = true;
           this.error = false;
+          this.onSend = false;
         },
         (error) => {
           this.success = false;
           this.error = true;
+          this.onSend = false;
         });
   }
 
