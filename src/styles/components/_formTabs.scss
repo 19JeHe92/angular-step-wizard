@@ -1,9 +1,10 @@
 .multistepForm {
   background: $white;
   width: 75vw;
-  height: 80vh;
+  height: 85vh;
   margin: 5vh auto;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  overflow: auto;
 
   form {
     width: 100%;
@@ -17,6 +18,12 @@
     .nav-link.active {
       border: none;
       border-radius: 0;
+    }
+
+    .nav-tabs,
+    .nav-link,
+    .nav-link.active{
+      min-height: 12vh;
     }
 
     .nav-item {
@@ -90,36 +97,16 @@
 
     .tab-content {
       position: relative;
-      padding: 4rem 1rem;
+      padding: 4rem 5rem;
+      height: calc(85vh - 12vh);
 
-      @include media-breakpoint-up(sm) {
-        padding: 4rem 2rem;
-
-        .button-group {
-          padding: 0 2rem;
-        }
-      }
-
-      @include media-breakpoint-up(md) {
-        padding: 4rem 5rem;
-        .button-group {
-          padding: 0 5rem;
-        }
-      }
-
-      height: 87%;
-
-      .tabDesc {
-        font-weight: bold;
-        margin-bottom: 1rem;
+      .tab-form {
+        min-height: calc(85vh - 12vh - 8rem - 1rem); // tab-contentHeight - tab-contentPadding - button-group-padding
       }
 
       .button-group {
+        padding-top: 1rem;
         width: 100%;
-        position: absolute;
-        bottom: 2rem;
-        left: 0;
-        padding: 0 1rem;
 
         .btn-left {
           float: left;
@@ -127,6 +114,95 @@
 
         .btn-right {
           float: right;
+        }
+      }
+
+      .tabDesc {
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .multistepForm {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    tabset {
+      .nav-tabs,
+      .nav-link,
+      .nav-link.active{
+        min-height: 10vh;
+      }
+
+      .tab-content {
+        .tab-form {
+          min-height: calc(100vh - 10vh - 8rem - 1rem); // tab-contentHeight - tab-contentPadding - button-group-padding
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .multistepForm {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    tabset {
+
+      .tab-content {
+        padding: 3rem 2rem;
+
+        .tab-form {
+          min-height: calc(100vh - 12vh - 8rem - 1rem); // tab-contentHeight - tab-contentPadding - button-group-padding
+        }
+
+        .tabDesc {
+          margin-bottom: 1.25rem;
+          h5 {
+            font-size: 1rem;
+            font-weight: bold;
+          }
+        }
+
+        .button-group {
+          button {
+            width: 100%;
+            &:last-child {
+              margin-top: 1rem;
+              margin-bottom: 2rem;
+            }
+
+          }
+        }
+      }
+      .nav-item {
+        .nav-link {
+          .tabName h6 {
+            font-size: .8rem;
+            margin-top: .5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .multistepForm {
+    tabset {
+      .nav-tabs,
+      .nav-link,
+      .nav-link.active{
+        min-height: 10vh;
+      }
+
+      .tab-content {
+        .tab-form {
+          min-height: calc(100vh - 10vh - 8rem - 1rem); // tab-contentHeight - tab-contentPadding - button-group-padding
         }
       }
     }
