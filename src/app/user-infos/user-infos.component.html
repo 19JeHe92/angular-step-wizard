@@ -7,7 +7,7 @@
       <mat-form-field>
         <mat-label>Anrede*</mat-label>
         <select matNativeControl formControlName="gender">
-          <option *ngFor="let gender of genders" [value]="gender.value">
+          <option *ngFor="let gender of genders" [value]="gender.name">
             {{gender.name}}
           </option>
         </select>
@@ -17,7 +17,7 @@
       <mat-form-field>
         <mat-label>Titel</mat-label>
         <select matNativeControl formControlName="title">
-          <option *ngFor="let title of titles" [value]="title.value">
+          <option *ngFor="let title of titles" [value]="title.name">
             {{title.name}}
           </option>
         </select>
@@ -79,7 +79,7 @@
   </div>
 </div>
 
-<div class="tabDesc mt-5">
+<div class="tabDesc mt-3">
   <span><h5>Adressdaten</h5></span>
 </div>
 <div [formGroup]="parentForm">
@@ -102,7 +102,7 @@
         <input type="text" id="number" formControlName="number" placeholder="&nbsp;" pattern="[0-9a-zA-Z]*"
                [maxlength]="10" oninput="if (this.value.length > this.length) this.value = this.value.slice(0, this.maxLength);">
         <span class="label" [ngClass]="{'slideUpPlaceholder': parentForm.get('address').get('number').touched && parentForm.get('address').get('number').value}">
-            Nr.*</span>
+            Hausnummer*</span>
         <span class="inp-border"></span>
       </label>
       <div class="invalid-hint" *ngIf="parentForm.get('address').get('number').touched && parentForm.get('address').get('number').invalid">

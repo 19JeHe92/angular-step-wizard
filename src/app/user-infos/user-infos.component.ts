@@ -43,7 +43,7 @@ export class UserInfosComponent implements OnInit {
   countries = [
     {
       name: 'Deutschland',
-      value: 'germany'
+      value: 'DE'
     },
   ];
   constructor() { }
