@@ -1,13 +1,16 @@
 <div class="multistepForm">
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()" autocomplete="new-password">
     <tabset #staticTabs [justified]="true">
-      <tab id="tab1" (deselect)="onDeSelect($event)">
+      <tab id="tab1" (deselect)="onDeSelect($event)" (selectTab)="selectTab(0)">
         <ng-template tabHeading>
           <span class="step">1</span>
           <span class="check"><fa-icon [icon]="faCheck"></fa-icon></span>
           <span class="tabName d-none d-sm-block d-xs-block"><h6>Account Informationen</h6></span>
         </ng-template>
-        <app-account-infos [parentForm]="userForm"></app-account-infos>
+        <div class="tab-form">
+          <app-account-infos [parentForm]="userForm"></app-account-infos>
+        </div>
+
         <div class="button-group">
           <button type="button" class="btn btn-primary btn-right"
                   [disabled]="userForm.get('username').invalid || userForm.get('email').invalid ||
@@ -16,15 +19,17 @@
         </div>
       </tab>
 
-      <tab id="tab2" [disabled]="true">
+      <tab id="tab2" [disabled]="true" (selectTab)="selectTab(1)">
         <ng-template tabHeading>
           <span class="step">2</span>
           <span class="check"><fa-icon [icon]="faCheck"></fa-icon></span>
           <span class="tabName d-none d-sm-block d-xs-block"><h6>Persönliche Informationen</h6></span>
         </ng-template>
 
+        <div class="tab-form">
+          <app-user-infos [parentForm]="userForm"></app-user-infos>
+        </div>
 
-        <app-user-infos [parentForm]="userForm"></app-user-infos>
 
 
         <div class="button-group">
@@ -34,7 +39,7 @@
         </div>
       </tab>
 
-      <tab id="tab3" [disabled]="true">
+      <tab id="tab3" [disabled]="true"  (selectTab)="selectTab(2)">
         <ng-template tabHeading>
           <span class="step">3</span>
           <span class="check"><fa-icon [icon]="faCheck"></fa-icon></span>
@@ -43,7 +48,9 @@
 
         <ng-template [ngIf]="finished">
 
+          <div class="tab-form">
             <app-summary [userFormObj]="userFormObj" [success]="success" [error]="error"></app-summary>
+          </div>
 
 
         </ng-template>
